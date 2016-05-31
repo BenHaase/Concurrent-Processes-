@@ -1,0 +1,17 @@
+CC = gcc
+CFLAGS = -g
+TARGET = all
+OBJS = master.o slave.o memstrct.h
+CLFILES = master slave
+.SUFFIXES: .c .o
+
+all: master slave
+
+$(TARGET): $(OBJS)
+	$(CC) -o $@ $(OBJS)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	/bin/rm -f *.o $(TARGET) $(CLFILES) cstest
